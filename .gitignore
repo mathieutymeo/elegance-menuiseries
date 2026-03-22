@@ -1,0 +1,11 @@
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+*.code-workspace
+
+# Node (si utilisé plus tard)
+node_modules/

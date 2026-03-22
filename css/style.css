@@ -1,0 +1,585 @@
+/* ============================================================
+   ÉLÉGANCE MENUISERIES — Styles principaux
+   Police : Figtree (Google Fonts)
+   Référence design : Paper.design / artboard 1920×1200
+   ============================================================ */
+
+/* ── Reset de base ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Figtree", system-ui, sans-serif;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   HERO SECTION
+   Stratégie de layout :
+   — Logo   : positionné en absolu, ancré en haut
+   — Tagline: positionné en absolu, ancré en bas
+   — Bloc titre+CTA : centré verticalement dans l'espace restant
+     (les deux éléments forment un groupe solidaire → jamais de chevauchement)
+   ============================================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 580px;
+  overflow: hidden;
+}
+
+/* ── Image de fond + overlay ───────────────────────────────── */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.20)),
+    url("../assets/images/serene modern outdoor space@2x (2).jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* ── Logo ──────────────────────────────────────────────────── */
+/*
+   Design : top 78.5px sur hero 1200px → 6.54%
+   Largeur : 206px sur base 1920px → 10.73vw (max 206px)
+*/
+.hero__logo {
+  position: absolute;
+  top: clamp(40px, 6.54vh, 78.5px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(110px, 10.73vw, 206px);
+  height: auto;
+  z-index: 1;
+}
+
+/* ── Groupe titre + CTA ────────────────────────────────────── */
+/*
+   Dans le design (1920×1200) :
+   - Titre  : top 481px, hauteur ~240px (3 lignes × 80px)
+   - CTA    : top 749px, hauteur 51px
+   → Centre du groupe : (481 + 800) / 2 = 640.5px / 1200 = 53.4%
+   → Le groupe est centré à ~53% de la hauteur du hero.
+   gap 28px entre titre et CTA.
+*/
+.hero__main {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 2.33vh, 28px);
+  width: 100%;
+  z-index: 1;
+}
+
+/* ── Titre principal ───────────────────────────────────────── */
+/*
+   Design : Figtree 75px / weight 400 / letter-spacing -0.05em / line-height 80px
+   Largeur conteneur : 1097px / 1920px = 57.14vw
+*/
+.hero__title {
+  width: min(978px, 90vw);
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(26px, 3.906vw, 75px);
+  font-weight: 400;
+  line-height: clamp(32px, 4.167vw, 80px);
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* ── Bouton CTA ────────────────────────────────────────────── */
+/*
+   Design : 388×51px / background #938D82 / gap interne 14px
+*/
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: clamp(260px, 20.21vw, 388px);
+  height: 51px;
+  padding-block: 10px;
+  background-color: #938D82;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.hero__cta:hover {
+  background-color: #7d7870;
+}
+
+.hero__cta-arrow {
+  flex-shrink: 0;
+  width: clamp(16px, 1.146vw, 22px);
+  height: auto;
+}
+
+.hero__cta-label {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(11px, 0.833vw, 16px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+/* ── Tagline bas de hero ───────────────────────────────────── */
+/*
+   Design : top 1063px sur 1200px → distance depuis le bas = 137px = 11.42vh
+   Font : Figtree 20px / weight 400
+*/
+.hero__tagline {
+  position: absolute;
+  bottom: clamp(16px, 11.42vh, 137px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(11px, 1.042vw, 20px);
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  color: #ffffff;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* ============================================================
+   NAVIGATION PRINCIPALE
+   Design : fond #F3F0EC, items uppercase 16px Figtree,
+            carré marqueur 12×12px #9E8C7D, gap 30px entre items,
+            séparateur 1px #9E8C7D en bas.
+   Comportement : sticky — se fixe en haut du viewport au scroll.
+   ============================================================ */
+
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: #F3F0EC;
+  transition: box-shadow 0.25s ease;
+}
+
+/* Ombre activée via JS quand la nav est collée en haut */
+.main-nav.is-sticky {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Liste des items — centrée, flex row, gap 30px */
+.main-nav__list {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  padding: 37px 80px 20px;
+  margin: 0;
+}
+
+/* Chaque lien — flex row, carré + texte, gap 13px */
+.main-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #000000;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
+}
+
+.main-nav__link:hover {
+  opacity: 0.6;
+}
+
+/* Carré marqueur 12×12px couleur #9E8C7D */
+.main-nav__dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #9E8C7D;
+}
+
+/* Séparateur 1px #9E8C7D — marges 80px de chaque côté */
+.main-nav__separator {
+  display: block;
+  width: calc(100% - 160px);
+  margin: 0 80px;
+  border: none;
+  border-top: 1px solid #9E8C7D;
+}
+
+/* ── Sticky detection via IntersectionObserver ─────────────── */
+/* (voir le script en bas de page) */
+
+/* ============================================================
+   COMPOSANTS PARTAGÉS — label de section + séparateur
+   ============================================================ */
+
+/*
+   Label de section : carré 16px + texte 20px uppercase #998D7F
+   Deux variantes : --center (centré) et --left (aligné gauche à 80px)
+*/
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.section-label--center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* --left : aligne à 80px du bord artboard
+   Le padding de la section est 160px → on recule de 80px */
+.section-label--left {
+  margin-left: -80px;
+}
+
+.section-label__dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #9E8C7D;
+}
+
+.section-label__text {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #998D7F;
+  white-space: nowrap;
+}
+
+/* Séparateur 1px #9E8C7D — dépasse du padding de 80px de chaque côté */
+.section-rule {
+  display: block;
+  border: none;
+  height: 1px;
+  background-color: #9E8C7D;
+  margin-left: -80px;
+  margin-right: -80px;
+}
+
+/* ============================================================
+   SECTION "LA PROMESSE ÉLÉGANCE"
+   Design ref : label top 1439px, texte top 1520px, règle top 1999px
+   ============================================================ */
+
+.section-promesse {
+  background-color: #F3F0EC;
+  padding: 159px 160px 0;
+}
+
+/*
+   Grande accroche : Figtree 75px / line-height 75px / letter-spacing -0.05em
+   Largeur max : 1325px (design) — centrée
+   margin-top : 81px (1520 - 1439)
+*/
+.promesse__body {
+  max-width: 1325px;
+  margin: 81px auto 0;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(28px, 3.906vw, 75px);
+  font-weight: 400;
+  line-height: clamp(34px, 3.906vw, 75px);
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: #000000;
+  text-wrap: pretty;
+}
+
+/* Règle après le texte :
+   1999 - (1520 + 300) = 179px de marge après le texte */
+.section-promesse .section-rule {
+  margin-top: 179px;
+}
+
+/* ============================================================
+   SECTION "NOTRE GAMME DE MENUISERIES"
+   Design ref : label top 2033px, images top 2158px
+   ============================================================ */
+
+.section-gamme {
+  background-color: #F3F0EC;
+  padding: 34px 160px 120px;
+}
+
+/* ── Rangée 1 : grande image | texte | petite image décalée ── */
+/*
+   Colonnes desktop :
+   col-1 = 780px  (grande image)
+   col-2 = 1fr    (texte descriptif, ~370px)
+   col-3 = 370px  (petite image)
+   margin-top rangée : 125px (2158 - 2033)
+   offset petite image : margin-top 238px (2396 - 2158)
+*/
+.gamme-intro {
+  display: grid;
+  /* 780 : texte(≈370) : 370 — proportions exactes du design */
+  grid-template-columns: 780fr 370fr 370fr;
+  column-gap: 40px;
+  align-items: start;
+  margin-top: 125px;
+}
+
+.gamme-intro__desc {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000000;
+  text-wrap: pretty;
+}
+
+/* Petite image décalée vers le bas de 238px */
+.gamme-card--offset {
+  margin-top: 238px;
+}
+
+/* ── Rangée 2 : 3 cartes (petite | petite | grande) ── */
+/*
+   Colonnes : 370px | 370px | 1fr (= 780px)
+   gap : 40px
+   margin-top depuis la fin de la rangée 1 : 81px
+*/
+.gamme-row {
+  display: grid;
+  /* 370 : 370 : 780 — Clôtures aussi large que Fenêtres */
+  grid-template-columns: 370fr 370fr 780fr;
+  gap: 40px;
+  margin-top: 81px;
+}
+
+/* ── Carte produit ─────────────────────────────────────────── */
+
+.gamme-card {
+  position: relative;
+  overflow: hidden;
+  height: 560px;
+}
+
+.gamme-card__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.4s ease;
+}
+
+.gamme-card:hover .gamme-card__bg {
+  transform: scale(1.03);
+}
+
+/*
+   Label centré (H + V) dans la carte :
+   Figtree 40px / weight 400 / letter-spacing -0.05em / line-height 40px
+*/
+.gamme-card__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: #ffffff;
+  text-wrap: pretty;
+  padding: 0 24px;
+  pointer-events: none;
+}
+
+/* ============================================================
+   RESPONSIVE — Tablette & mobile (≤ 768px)
+   ============================================================ */
+
+@media (max-width: 1280px) {
+
+  .section-promesse,
+  .section-gamme {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .section-label--left {
+    margin-left: 0;
+  }
+
+  .section-rule,
+  .section-promesse .section-rule {
+    margin-left: -40px;
+    margin-right: -40px;
+  }
+
+  .gamme-intro {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* Texte passe au-dessus des vignettes */
+  .gamme-intro__desc {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+
+  .gamme-card--offset {
+    margin-top: 0;
+  }
+
+  .gamme-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* La grande carte prend toute la largeur */
+  .gamme-row .gamme-card--large {
+    grid-column: 1 / -1;
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .hero__title {
+    white-space: normal;
+  }
+
+  .section-promesse,
+  .section-gamme {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .section-label--left {
+    margin-left: 0;
+  }
+
+  .section-rule,
+  .section-promesse .section-rule {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+
+  .section-promesse {
+    padding-top: 64px;
+  }
+
+  .section-promesse .section-rule {
+    margin-top: 64px;
+  }
+
+  .gamme-intro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .gamme-card--offset {
+    margin-top: 0;
+  }
+
+  .gamme-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .gamme-row .gamme-card--large {
+    grid-column: 1;
+    height: 300px;
+  }
+
+  .gamme-card {
+    height: 280px;
+  }
+
+  .gamme-card__label {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .section-label__text {
+    font-size: 14px;
+  }
+
+  .hero__cta {
+    width: min(320px, 88vw);
+    height: auto;
+    padding: 14px 20px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero__cta-label {
+    font-size: 12px;
+    white-space: normal;
+  }
+
+  .hero__tagline {
+    white-space: normal;
+    width: 90vw;
+    line-height: 1.5;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Petit mobile (≤ 390px)
+   ============================================================ */
+
+@media (max-width: 390px) {
+
+  .hero__logo {
+    width: 90px;
+  }
+
+  .hero__title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
