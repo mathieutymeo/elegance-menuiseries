@@ -12,9 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $configPath = __DIR__ . '/api/config.php';
         $configContent = file_get_contents($configPath);
+        $replacement = "define('ADMIN_PASSWORD_HASH', '" . addcslashes($hash, "'\\") . "');";
         $configContent = preg_replace(
             "/define\('ADMIN_PASSWORD_HASH',\s*'[^']*'\);/",
-            "define('ADMIN_PASSWORD_HASH', '$hash');",
+            str_replace('$', '\$', $replacement),
             $configContent
         );
         file_put_contents($configPath, $configContent);
