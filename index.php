@@ -58,19 +58,19 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
         </a>
       </li>
       <li class="main-nav__item">
-        <a href="#fenetres-alu" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Fenêtres / Portes Alu</a>
+        <a href="/fenetres-portes-alu.html" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Fenêtres / Portes Alu</a>
       </li>
       <li class="main-nav__item">
-        <a href="#fenetres-pvc" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Fenêtres / Portes PVC</a>
+        <a href="/fenetres-portes-pvc.html" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Fenêtres / Portes PVC</a>
       </li>
       <li class="main-nav__item">
-        <a href="#volets" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Volets roulants</a>
+        <a href="/volets-roulants.html" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Volets roulants</a>
       </li>
       <li class="main-nav__item">
-        <a href="#portes-garage" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Portes de garage</a>
+        <a href="/portes-garage.html" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Portes de garage</a>
       </li>
       <li class="main-nav__item">
-        <a href="#clotures" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Clôtures et portails</a>
+        <a href="/portails-clotures.html" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Clôtures et portails</a>
       </li>
     </ul>
     <hr class="main-nav__separator">
@@ -109,31 +109,40 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
       <span class="section-label__text"><?= e($gamme['label']) ?></span>
     </div>
 
+    <?php
+    $produit_urls = [
+      '/fenetres-portes-alu.html',
+      '/fenetres-portes-pvc.html',
+      '/volets-roulants.html',
+      '/portes-garage.html',
+      '/portails-clotures.html'
+    ];
+    ?>
     <div class="gamme-intro">
-      <div class="gamme-card gamme-card--large" id="fenetres-alu-card">
+      <a href="<?= $produit_urls[0] ?>" class="gamme-card gamme-card--large" id="fenetres-alu-card">
         <div class="gamme-card__bg" style="background-image: linear-gradient(rgba(0,0,0,0.20)), url('<?= e($gamme['produits'][0]['image']) ?>');"></div>
         <span class="gamme-card__label"><?= $gamme['produits'][0]['label'] ?></span>
-      </div>
+      </a>
       <p class="gamme-intro__desc"><?= e($gamme['description']) ?></p>
-      <div class="gamme-card gamme-card--small gamme-card--offset" id="fenetres-pvc-card">
+      <a href="<?= $produit_urls[1] ?>" class="gamme-card gamme-card--small gamme-card--offset" id="fenetres-pvc-card">
         <div class="gamme-card__bg" style="background-image: linear-gradient(rgba(0,0,0,0.20)), url('<?= e($gamme['produits'][1]['image']) ?>');"></div>
         <span class="gamme-card__label"><?= $gamme['produits'][1]['label'] ?></span>
-      </div>
+      </a>
     </div>
 
     <div class="gamme-row" id="volets">
-      <div class="gamme-card gamme-card--small">
+      <a href="<?= $produit_urls[2] ?>" class="gamme-card gamme-card--small">
         <div class="gamme-card__bg" style="background-image: linear-gradient(rgba(0,0,0,0.20)), url('<?= e($gamme['produits'][2]['image']) ?>');"></div>
         <span class="gamme-card__label"><?= $gamme['produits'][2]['label'] ?></span>
-      </div>
-      <div class="gamme-card gamme-card--small" id="portes-garage">
+      </a>
+      <a href="<?= $produit_urls[3] ?>" class="gamme-card gamme-card--small" id="portes-garage">
         <div class="gamme-card__bg" style="background-image: linear-gradient(rgba(0,0,0,0.20)), url('<?= e($gamme['produits'][3]['image']) ?>');"></div>
         <span class="gamme-card__label"><?= $gamme['produits'][3]['label'] ?></span>
-      </div>
-      <div class="gamme-card gamme-card--large" id="clotures">
+      </a>
+      <a href="<?= $produit_urls[4] ?>" class="gamme-card gamme-card--large" id="clotures">
         <div class="gamme-card__bg" style="background-image: linear-gradient(rgba(0,0,0,0.20)), url('<?= e($gamme['produits'][4]['image']) ?>');"></div>
         <span class="gamme-card__label"><?= $gamme['produits'][4]['label'] ?></span>
-      </div>
+      </a>
     </div>
   </section>
 

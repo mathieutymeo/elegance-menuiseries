@@ -528,6 +528,9 @@ a {
   position: relative;
   overflow: hidden;
   height: 560px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .gamme-card__bg {
