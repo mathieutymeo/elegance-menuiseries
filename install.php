@@ -10,15 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Le mot de passe doit faire au moins 6 caractères.';
     } else {
         $hash = password_hash($password, PASSWORD_DEFAULT);
+        // Écrire le config complet pour éviter les problèmes d'échappement
         $configPath = __DIR__ . '/api/config.php';
-        $configContent = file_get_contents($configPath);
-        $replacement = "define('ADMIN_PASSWORD_HASH', '" . addcslashes($hash, "'\\") . "');";
-        $configContent = preg_replace(
-            "/define\('ADMIN_PASSWORD_HASH',\s*'[^']*'\);/",
-            str_replace('$', '\$', $replacement),
-            $configContent
-        );
-        file_put_contents($configPath, $configContent);
+        $newConfig = '<?php' . "\n"
+            . '// Configuration de l\'administration' . "\n\n"
+            . 'define(\'ADMIN_PASSWORD_HASH\', \'' . $hash . '\');' . "\n"
+            . 'define(\'CONTENT_FILE\', __DIR__ . \'/../content.json\');' . "\n"
+            . 'define(\'UPLOAD_DIR\', __DIR__ . \'/../uploads/\');' . "\n"
+            . 'define(\'MAX_UPLOAD_SIZE\', 5 * 1024 * 1024);' . "\n"
+            . 'define(\'ALLOWED_MIME_TYPES\', [\'image/jpeg\', \'image/png\', \'image/webp\', \'image/svg+xml\']);' . "\n";
+        file_put_contents($configPath, $newConfig);
         $success = true;
     }
 }
