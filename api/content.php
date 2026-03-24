@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) { session_start(); }
 require_once __DIR__ . '/config.php';
-require_once __DIR__ . '/auth.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -20,6 +18,8 @@ if ($method === 'GET') {
 
 // POST : mise à jour (requiert authentification)
 if ($method === 'POST') {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+    require_once __DIR__ . '/auth.php';
     requireAuth();
     verifyCSRF();
 
