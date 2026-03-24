@@ -222,6 +222,7 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
     </div>
     <address class="site-footer__address">
       <?= e($footer['nom']) ?><br>
+      <br>
       <?= e($footer['adresse']) ?><br>
       <?= e($footer['adresse2'] ?? '') ?><br>
       <br>
