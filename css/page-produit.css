@@ -1,0 +1,646 @@
+/* ============================================================
+   PAGE PRODUIT — Hero split layout
+   Maquette : panneau beige 480px (25%) à gauche,
+   image + overlay 66% à droite.
+   Hauteur : 1200px sur artboard 1920px
+   ============================================================ */
+
+.hero-produit {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  max-height: 1200px;
+  overflow: hidden;
+}
+
+/* Panneau beige à gauche — 25% de la largeur */
+.hero-produit__panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background-color: #9E8C7D;
+  z-index: 1;
+}
+
+/* Image de fond à droite — 75% restants */
+.hero-produit__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.40)),
+    url('../assets/images/serene modern outdoor space@2x (2).jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Logo centré horizontalement */
+.hero-produit__logo {
+  position: absolute;
+  top: 113px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: clamp(200px, 12.55vw, 241px);
+  height: auto;
+}
+
+/* Titre — aligné à gauche, positionné sur le panneau beige + image
+   Maquette : x=160, y=560, police 75px */
+.hero-produit__title {
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-20%);
+  z-index: 2;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(47px, 3.906vw, 75px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  max-width: 60%;
+}
+
+/* Tagline SEO — en bas du hero
+   Maquette : x=159, y=1079, 20px, centré sous le panneau */
+.hero-produit__tagline {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  z-index: 2;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(13px, 1.042vw, 20px);
+  font-weight: 400;
+  line-height: 1.35;
+  color: #ffffff;
+}
+
+/* ============================================================
+   RESPONSIVE — Hero page produit
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .hero-produit__title {
+    max-width: 70%;
+  }
+}
+
+/* ============================================================
+   SECTION INTRO PRODUIT — Présentation + CTA
+   ============================================================ */
+
+.section-intro-produit {
+  background-color: #F3F0EC;
+  padding: 80px 80px 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-produit__body {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(33px, 2.734vw, 52px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #000000;
+  max-width: 1000px;
+}
+
+.intro-produit__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 30px;
+  height: 50px;
+  background-color: #938D82;
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 60px;
+  transition: background-color 0.2s ease;
+}
+
+.intro-produit__cta:hover {
+  background-color: #7d7870;
+}
+
+.intro-produit__cta img {
+  flex-shrink: 0;
+  width: 20px;
+  height: auto;
+}
+
+.intro-produit__cta span {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+@media (max-width: 1200px) {
+  .section-intro-produit {
+    padding: 60px 40px 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-intro-produit {
+    padding: 40px 24px 60px;
+  }
+
+  .intro-produit__body {
+    margin-top: 24px;
+  }
+
+  .intro-produit__cta {
+    margin-top: 40px;
+  }
+}
+
+/* ============================================================
+   SECTION GAMME PRODUIT — Blocs zigzag sur fond noir
+   Maquette : fond #000, 4 blocs alternant image/texte
+   Image 720×723, titre 40px, paragraphe 20px, tout en blanc
+   ============================================================ */
+
+.section-gamme-produit {
+  background-color: #000000;
+  padding: 0 80px;
+}
+
+/* Chaque bloc : 2 colonnes côte à côte */
+.gamme-bloc {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 80px 0;
+}
+
+/* Image */
+.gamme-bloc__visual {
+  flex-shrink: 0;
+  width: 50%;
+  position: relative;
+}
+
+.gamme-bloc__visual img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 720 / 723;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay sur les images */
+.gamme-bloc__visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.10);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Texte */
+.gamme-bloc__text {
+  flex: 1;
+  padding-top: 40px;
+}
+
+.gamme-bloc__title {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(28px, 2.083vw, 40px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.gamme-bloc__desc {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(14px, 1.042vw, 20px);
+  font-weight: 400;
+  line-height: 1.35;
+  color: #ffffff;
+  max-width: 720px;
+}
+
+/* Bloc gauche : texte à gauche, image à droite (ordre HTML) */
+.gamme-bloc--left {
+  flex-direction: row;
+}
+
+/* Bloc droite : image à gauche, texte à droite (ordre HTML) */
+.gamme-bloc--right {
+  flex-direction: row;
+}
+
+/* ============================================================
+   RESPONSIVE — Gamme produit
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .section-gamme-produit {
+    padding: 0 40px;
+  }
+
+  .gamme-bloc {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-gamme-produit {
+    padding: 0 24px;
+  }
+
+  .gamme-bloc {
+    flex-direction: column !important;
+    gap: 24px;
+    padding: 40px 0;
+  }
+
+  .gamme-bloc__visual {
+    width: 100%;
+  }
+
+  .gamme-bloc__text {
+    padding-top: 0;
+  }
+}
+
+/* ── Séparateur titre entre fenêtres et portes ─────────────── */
+
+.gamme-separateur {
+  padding: 100px 0 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.gamme-separateur__title {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(36px, 3vw, 56px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.gamme-separateur__desc {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(14px, 1.042vw, 20px);
+  font-weight: 400;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 700px;
+}
+
+@media (max-width: 767px) {
+  .gamme-separateur {
+    padding: 60px 0 30px;
+  }
+}
+
+/* ============================================================
+   SECTION POINTS FORTS — Icônes + légendes sur fond beige
+   ============================================================ */
+
+.section-points-forts {
+  background-color: #F3F0EC;
+  padding: 100px 80px;
+}
+
+.points-forts__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px 40px;
+}
+
+.point-fort {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.point-fort__icon {
+  width: 72px;
+  height: 72px;
+  border: 2px solid #9E8C7D;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.point-fort__icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.point-fort__label {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #000000;
+  letter-spacing: -0.01em;
+}
+
+/* Responsive points forts */
+@media (max-width: 1200px) {
+  .section-points-forts {
+    padding: 80px 40px;
+  }
+
+  .points-forts__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-points-forts {
+    padding: 60px 24px;
+  }
+
+  .points-forts__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 16px;
+  }
+
+  .point-fort__icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .point-fort__label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .points-forts__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   SECTION PROMESSE — Renvoi vers la page d'accueil
+   Fond beige, label + grand texte centré + bouton + 3 photos
+   ============================================================ */
+
+.section-promesse-produit {
+  background-color: #F3F0EC;
+  padding: 120px 80px 200px;
+}
+
+.section-promesse-produit .section-label {
+  justify-content: center;
+}
+
+.promesse-produit__body {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: clamp(47px, 3.906vw, 75px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #000000;
+  text-align: center;
+  max-width: 1283px;
+  margin: 40px auto 0;
+}
+
+.promesse-produit__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 30px;
+  height: 50px;
+  background-color: #938D82;
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  transition: background-color 0.2s ease;
+}
+
+.promesse-produit__cta:hover {
+  background-color: #7d7870;
+}
+
+.promesse-produit__cta img {
+  flex-shrink: 0;
+  width: 20px;
+  height: auto;
+}
+
+.promesse-produit__cta span {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.promesse-produit__top {
+  text-align: center;
+}
+
+/* Composition photos : 3 images décalées */
+.promesse-produit__photos {
+  position: relative;
+  margin-top: 80px;
+  margin-bottom: 120px;
+  height: 560px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.promesse-produit__photo {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.promesse-produit__photo--1 {
+  width: 45%;
+  height: 400px;
+  top: 0;
+  left: 0;
+}
+
+.promesse-produit__photo--2 {
+  width: 20%;
+  height: 200px;
+  top: 0;
+  right: 0;
+}
+
+.promesse-produit__photo--3 {
+  width: 45%;
+  height: 460px;
+  bottom: -100px;
+  left: 30%;
+}
+
+/* Overlay sur les photos */
+.promesse-produit__photo-wrap {
+  position: absolute;
+  overflow: hidden;
+}
+
+.promesse-produit__photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.promesse-produit__photo-wrap--1 {
+  width: 45%;
+  height: 400px;
+  top: 0;
+  left: 0;
+}
+
+.promesse-produit__photo-wrap--2 {
+  width: 20%;
+  height: 200px;
+  top: 0;
+  right: 0;
+}
+
+.promesse-produit__photo-wrap--3 {
+  width: 45%;
+  height: 460px;
+  bottom: -100px;
+  left: 30%;
+}
+
+.promesse-produit__photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 1200px) {
+  .section-promesse-produit {
+    padding: 80px 40px 80px;
+  }
+
+  .promesse-produit__photos {
+    height: 400px;
+  }
+
+  .promesse-produit__photo-wrap--1 {
+    height: 300px;
+  }
+
+  .promesse-produit__photo-wrap--2 {
+    height: 160px;
+  }
+
+  .promesse-produit__photo-wrap--3 {
+    height: 350px;
+    bottom: -80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-promesse-produit {
+    padding: 60px 24px 60px;
+  }
+
+  .promesse-produit__photos {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .promesse-produit__photo-wrap {
+    position: relative;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .promesse-produit__photo-wrap img {
+    height: 200px;
+  }
+
+  .promesse-produit__body {
+    margin-top: 24px;
+  }
+
+  .promesse-produit__cta {
+    margin-top: 30px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Hero page produit (mobile)
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .hero-produit {
+    min-height: 500px;
+  }
+
+  /* En mobile, le panneau passe en bandeau horizontal en haut */
+  .hero-produit__panel {
+    width: 100%;
+    height: 30%;
+    z-index: 1;
+  }
+
+  /* L'image couvre tout le bas */
+  .hero-produit__bg {
+    width: 100%;
+    height: 70%;
+    top: 30%;
+  }
+
+  .hero-produit__logo {
+    top: 40px;
+  }
+
+  .hero-produit__title {
+    left: 24px;
+    right: 24px;
+    max-width: none;
+    font-size: 36px;
+  }
+
+  .hero-produit__tagline {
+    left: 24px;
+    right: 24px;
+    font-size: 13px;
+    bottom: 24px;
+  }
+}

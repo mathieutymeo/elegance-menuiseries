@@ -1,0 +1,17 @@
+# Élégance Menuiseries — Configuration Apache
+
+# Rediriger index.html vers index.php
+DirectoryIndex index.php index.html
+
+# Protéger les fichiers sensibles
+<FilesMatch "^(content\.json|content\.json\.bak)$">
+  Require all denied
+</FilesMatch>
+
+# Empêcher le listing des répertoires
+Options -Indexes
+
+# Protéger les fichiers .htaccess
+<Files .htaccess>
+  Require all denied
+</Files>

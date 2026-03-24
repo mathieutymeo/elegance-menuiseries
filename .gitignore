@@ -9,3 +9,13 @@ desktop.ini
 
 # Node (si utilisé plus tard)
 node_modules/
+
+# Claude Code
+.claude/
+
+# Uploads (gérés par l'admin, pas par git)
+uploads/*
+!uploads/.htaccess
+
+# Backup content
+content.json.bak

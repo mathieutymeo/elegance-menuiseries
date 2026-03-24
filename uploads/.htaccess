@@ -1,0 +1,5 @@
+# Désactiver l'exécution PHP dans le dossier uploads
+php_flag engine off
+
+# Empêcher le listing
+Options -Indexes

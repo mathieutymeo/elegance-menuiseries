@@ -1,0 +1,369 @@
+/* ============================================================
+   ADMIN — Élégance Menuiseries
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Figtree", system-ui, sans-serif;
+  background: #F3F0EC;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* ── LOGIN ──────────────────────────────────────────────────── */
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login__card {
+  background: #fff;
+  padding: 48px 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login__title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.login__subtitle {
+  font-size: 14px;
+  color: #998D7F;
+  margin-bottom: 32px;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login__input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.login__input:focus {
+  border-color: #9E8C7D;
+}
+
+.login__btn {
+  padding: 12px;
+  background: #938D82;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login__btn:hover {
+  background: #7d7870;
+}
+
+.login__error {
+  color: #c0392b;
+  font-size: 13px;
+}
+
+/* ── DASHBOARD ──────────────────────────────────────────────── */
+
+.dashboard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: #fff;
+  border-bottom: 1px solid #e0dbd5;
+}
+
+.dashboard__title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dashboard__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dashboard__link {
+  font-size: 13px;
+  color: #938D82;
+  text-decoration: none;
+}
+
+.dashboard__link:hover {
+  text-decoration: underline;
+}
+
+.dashboard__logout {
+  padding: 6px 16px;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dashboard__logout:hover {
+  background: #c0392b;
+  color: #fff;
+  border-color: #c0392b;
+}
+
+/* ── TABS ───────────────────────────────────────────────────── */
+
+.dashboard__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0 32px;
+  background: #fff;
+  border-bottom: 1px solid #e0dbd5;
+}
+
+.dashboard__tab {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dashboard__tab:hover {
+  color: #333;
+}
+
+.dashboard__tab--active {
+  color: #000;
+  border-bottom-color: #938D82;
+}
+
+/* ── CONTENT AREA ───────────────────────────────────────────── */
+
+.dashboard__content {
+  padding: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── FORM ELEMENTS ──────────────────────────────────────────── */
+
+.form-section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+
+.form-section__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #9E8C7D;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-hint {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
+
+/* ── IMAGE UPLOAD ───────────────────────────────────────────── */
+
+.image-upload {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.image-upload__preview {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+}
+
+.image-upload__btn {
+  padding: 8px 16px;
+  background: #F3F0EC;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.image-upload__btn:hover {
+  background: #e8e3dc;
+}
+
+/* ── SAVE BUTTON ────────────────────────────────────────────── */
+
+.save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: #938D82;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 16px;
+}
+
+.save-btn:hover {
+  background: #7d7870;
+}
+
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── REPEATER (atouts, étapes, témoignages) ─────────────────── */
+
+.repeater-item {
+  padding: 24px;
+  background: #fafaf8;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.repeater-item__header {
+  font-size: 14px;
+  font-weight: 600;
+  color: #938D82;
+  margin-bottom: 16px;
+}
+
+/* ── TOAST ──────────────────────────────────────────────────── */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 24px;
+  background: #2ecc71;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  z-index: 9999;
+  transition: opacity 0.3s;
+}
+
+.toast--error {
+  background: #c0392b;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .dashboard__header {
+    padding: 12px 16px;
+  }
+
+  .dashboard__nav {
+    padding: 0 16px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .dashboard__tab {
+    white-space: nowrap;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  .dashboard__content {
+    padding: 16px;
+  }
+
+  .form-section {
+    padding: 20px;
+  }
+}
