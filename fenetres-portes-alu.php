@@ -52,11 +52,11 @@ $icons_svg = [
     <button class="main-nav__burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="main-nav__list" id="nav-list">
       <li class="main-nav__item"><a href="/" class="main-nav__link main-nav__link--brand"><span class="main-nav__dot" aria-hidden="true"></span> Élégance Menuiseries</a></li>
-      <li class="main-nav__item"><a href="#fenetres-alu" class="main-nav__link main-nav__link--active"><span class="main-nav__dot" aria-hidden="true"></span> Fenêtres / Portes Alu</a></li>
-      <li class="main-nav__item"><a href="#fenetres-pvc" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Fenêtres / Portes PVC</a></li>
-      <li class="main-nav__item"><a href="#volets" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Volets roulants</a></li>
-      <li class="main-nav__item"><a href="#portes-garage" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Portes de garage</a></li>
-      <li class="main-nav__item"><a href="#clotures" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Clôtures et portails</a></li>
+      <li class="main-nav__item"><a href="/fenetres-portes-alu.html" class="main-nav__link main-nav__link--active"><span class="main-nav__dot" aria-hidden="true"></span> Fenêtres / Portes Alu</a></li>
+      <li class="main-nav__item"><a href="/fenetres-portes-pvc.html" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Fenêtres / Portes PVC</a></li>
+      <li class="main-nav__item"><a href="/volets-roulants.html" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Volets roulants</a></li>
+      <li class="main-nav__item"><a href="/portes-garage.html" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Portes de garage</a></li>
+      <li class="main-nav__item"><a href="/portails-clotures.html" class="main-nav__link"><span class="main-nav__dot" aria-hidden="true"></span> Clôtures et portails</a></li>
     </ul>
     <hr class="main-nav__separator">
   </nav>
