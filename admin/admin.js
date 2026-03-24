@@ -447,8 +447,12 @@ function renderFooter() {
         <input class="form-input" id="footer-nom" value="${e(d.nom || '')}">
       </div>
       <div class="form-group">
-        <label class="form-label">Adresse</label>
+        <label class="form-label">Adresse 1</label>
         <input class="form-input" id="footer-adresse" value="${e(d.adresse || '')}">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Adresse 2</label>
+        <input class="form-input" id="footer-adresse2" value="${e(d.adresse2 || '')}">
       </div>
       <div class="form-group">
         <label class="form-label">Téléphone</label>
@@ -465,6 +469,11 @@ function renderFooter() {
       <div class="form-group">
         <label class="form-label">Crédit</label>
         <input class="form-input" id="footer-credit" value="${e(d.credit || '')}">
+      </div>
+      <div class="form-group">
+        <label class="form-label">URL du crédit</label>
+        <input class="form-input" id="footer-credit_url" value="${e(d.credit_url || '')}">
+        <p class="form-hint">Ex: https://www.tymeo.com</p>
       </div>
       ${links.map((l, i) => `
       <div class="form-group">
@@ -892,10 +901,12 @@ function saveFooter() {
   saveSection('footer', {
     nom: v('footer-nom'),
     adresse: v('footer-adresse'),
+    adresse2: v('footer-adresse2'),
     telephone: v('footer-telephone'),
     email: v('footer-email'),
     cta_label: v('footer-cta_label'),
     credit: v('footer-credit'),
+    credit_url: v('footer-credit_url'),
     legal_links
   });
 }

@@ -223,6 +223,7 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
     <address class="site-footer__address">
       <?= e($footer['nom']) ?><br>
       <?= e($footer['adresse']) ?><br>
+      <?= e($footer['adresse2'] ?? '') ?><br>
       <br>
       <a href="tel:<?= preg_replace('/\s/', '', $footer['telephone']) ?>" style="color:inherit;text-decoration:none;"><?= e($footer['telephone']) ?></a><br>
       <a href="mailto:<?= e($footer['email']) ?>" style="color:inherit;text-decoration:none;"><?= e($footer['email']) ?></a>
@@ -231,7 +232,7 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
       <?php foreach ($footer['legal_links'] as $link): ?>
       <a href="<?= e($link['url']) ?>"><?= e($link['label']) ?></a>
       <?php endforeach; ?>
-      <span class="site-footer__credit"><?= e($footer['credit']) ?></span>
+      <a href="<?= e($footer['credit_url'] ?? 'https://www.tymeo.com') ?>" class="site-footer__credit" target="_blank" rel="noopener"><?= e($footer['credit']) ?></a>
     </nav>
   </footer>
 

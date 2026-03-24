@@ -416,11 +416,13 @@
   },
   "footer": {
     "nom": "Élégance Menuiseries",
-    "adresse": "8, rue de la poissonnerie — 71100 Chalon-sur-Saône",
+    "adresse": "9 Rue de la Citadelle, 71100 Chalon-sur-Saône",
+    "adresse2": "26 Av. de la République, 21200 Beaune",
     "telephone": "06 10 93 12 99",
     "email": "contact@elegancemenuiseries.com",
     "cta_label": "RÉSERVER UN APPEL DE DÉCOUVERTE",
     "credit": "Création : Agence Tyméo",
+    "credit_url": "https://www.tymeo.com",
     "legal_links": [
       {"label": "Crédits & mentions légales", "url": "#"},
       {"label": "Politique de confidentialité", "url": "#"},
