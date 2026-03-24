@@ -1,5 +1,5 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 require_once __DIR__ . '/config.php';
 
 header('Content-Type: application/json; charset=utf-8');
@@ -32,42 +32,45 @@ function verifyCSRF(): void {
     }
 }
 
-$method = $_SERVER['REQUEST_METHOD'];
+// Ne traiter les requêtes que si auth.php est appelé directement (pas inclus)
+if (basename($_SERVER['SCRIPT_FILENAME']) === 'auth.php') {
+    $method = $_SERVER['REQUEST_METHOD'];
 
-if ($method === 'POST') {
-    $input = json_decode(file_get_contents('php://input'), true);
-    $action = $input['action'] ?? '';
+    if ($method === 'POST') {
+        $input = json_decode(file_get_contents('php://input'), true);
+        $action = $input['action'] ?? '';
 
-    if ($action === 'login') {
-        $password = $input['password'] ?? '';
-        if (password_verify($password, ADMIN_PASSWORD_HASH)) {
-            $_SESSION['admin_logged_in'] = true;
-            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-            echo json_encode([
-                'success' => true,
-                'csrf_token' => $_SESSION['csrf_token']
-            ]);
-        } else {
-            http_response_code(401);
-            echo json_encode(['error' => 'Mot de passe incorrect']);
+        if ($action === 'login') {
+            $password = $input['password'] ?? '';
+            if (password_verify($password, ADMIN_PASSWORD_HASH)) {
+                $_SESSION['admin_logged_in'] = true;
+                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+                echo json_encode([
+                    'success' => true,
+                    'csrf_token' => $_SESSION['csrf_token']
+                ]);
+            } else {
+                http_response_code(401);
+                echo json_encode(['error' => 'Mot de passe incorrect']);
+            }
+            exit;
         }
-        exit;
+
+        if ($action === 'logout') {
+            session_destroy();
+            echo json_encode(['success' => true]);
+            exit;
+        }
+
+        if ($action === 'status') {
+            echo json_encode([
+                'authenticated' => isAuthenticated(),
+                'csrf_token' => isAuthenticated() ? getCSRFToken() : null
+            ]);
+            exit;
+        }
     }
 
-    if ($action === 'logout') {
-        session_destroy();
-        echo json_encode(['success' => true]);
-        exit;
-    }
-
-    if ($action === 'status') {
-        echo json_encode([
-            'authenticated' => isAuthenticated(),
-            'csrf_token' => isAuthenticated() ? getCSRFToken() : null
-        ]);
-        exit;
-    }
+    http_response_code(400);
+    echo json_encode(['error' => 'Requête invalide']);
 }
-
-http_response_code(400);
-echo json_encode(['error' => 'Requête invalide']);
