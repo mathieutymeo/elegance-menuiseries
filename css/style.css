@@ -606,14 +606,13 @@ a {
   grid-template-columns: 1fr 1fr;
   column-gap: 0;
   align-items: start;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .atout {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  overflow: hidden;
 }
 
 /*
