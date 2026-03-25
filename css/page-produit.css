@@ -612,18 +612,16 @@
     min-height: 500px;
   }
 
-  /* En mobile, le panneau passe en bandeau horizontal en haut */
+  /* En mobile, on masque le panneau beige */
   .hero-produit__panel {
-    width: 100%;
-    height: 30%;
-    z-index: 1;
+    display: none;
   }
 
-  /* L'image couvre tout le bas */
+  /* L'image couvre tout le hero */
   .hero-produit__bg {
     width: 100%;
-    height: 70%;
-    top: 30%;
+    height: 100%;
+    top: 0;
   }
 
   .hero-produit__logo {
