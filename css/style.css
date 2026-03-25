@@ -481,7 +481,7 @@ a {
 
 .section-gamme {
   background-color: #F3F0EC;
-  padding: 34px 160px 480px;
+  padding: 34px 160px 320px;
 }
 
 /* ── Rangée 1 : grande image | texte | petite image décalée ── */
@@ -622,7 +622,7 @@ a {
    padding section = 160px → 400−160 = 240px).
 */
 .atout--1 {
-  margin-top: -120px;
+  margin-top: -80px;
   padding-left: clamp(80px, 12.5vw, 240px);
 }
 
