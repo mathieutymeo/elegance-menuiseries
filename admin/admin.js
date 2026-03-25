@@ -330,6 +330,11 @@ function renderLinks() {
         <label class="form-label">URL Instagram</label>
         <input class="form-input" id="links-instagram_url" value="${e(d.instagram_url || '')}">
       </div>
+      <div class="form-group">
+        <label class="form-label">Image de partage Facebook / réseaux sociaux</label>
+        ${imageUploadHTML(d.og_image || '', 'links-og_image')}
+        <p class="form-hint">Format recommandé : 1200×630 px, JPG. Affichée quand le site est partagé sur Facebook, LinkedIn, etc.</p>
+      </div>
       <button class="save-btn" onclick="saveLinks()">Sauvegarder</button>
     </div>
   `;
@@ -929,7 +934,8 @@ function saveLinks() {
   saveSection('links', {
     cta_url: v('links-cta_url'),
     facebook_url: v('links-facebook_url'),
-    instagram_url: v('links-instagram_url')
+    instagram_url: v('links-instagram_url'),
+    og_image: v('links-og_image')
   });
 }
 

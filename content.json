@@ -6,7 +6,8 @@
   "links": {
     "cta_url": "#contact",
     "facebook_url": "#",
-    "instagram_url": "#"
+    "instagram_url": "#",
+    "og_image": "assets/images/og-elegance-menuiseries.jpg"
   },
   "hero": {
     "title": "Vos menuiseries Alu et PVC fabriquées dans l'Ain et posées chez vous en Bourgogne",
