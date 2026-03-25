@@ -96,7 +96,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(16px, 2.33vh, 28px);
+  gap: clamp(24px, 4vh, 48px);
   width: 100%;
   z-index: 1;
 }
