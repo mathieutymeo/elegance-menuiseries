@@ -35,7 +35,7 @@ async function checkAuth() {
     if (res.authenticated) {
       csrfToken = res.csrf_token;
       await loadContent();
-      renderSection('links');
+      renderSection('home');
     } else {
       window.location.href = 'index.html';
     }
@@ -177,11 +177,11 @@ document.querySelectorAll('.dashboard__tab').forEach(tab => {
 function renderSection(section) {
   const container = document.getElementById('dashboard-content');
   const renderers = {
+    home: renderHome,
     links: renderLinks,
-    hero: renderHero,
+    accueil: renderAccueil,
     promesse: renderPromesse,
     gamme: renderGamme,
-    atouts: renderAtouts,
     methode: renderMethode,
     temoignages: renderTemoignages,
     cta: renderCTA,
@@ -198,6 +198,20 @@ function renderSection(section) {
     container.innerHTML = renderers[section]();
     initImageUploads();
   }
+}
+
+function renderHome() {
+  return `
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;text-align:center;">
+      <img src="/assets/icons/logo-elegance.svg" alt="Élégance Menuiseries" style="width:200px;height:auto;margin-bottom:32px;">
+      <h2 style="font-family:'Figtree',sans-serif;font-size:24px;font-weight:400;color:#000;margin:0 0 8px;">Bienvenue dans votre espace d'administration</h2>
+      <p style="font-family:'Figtree',sans-serif;font-size:14px;color:#666;margin:0;">Utilisez les onglets ci-dessus pour modifier le contenu de votre site.</p>
+    </div>
+  `;
+}
+
+function renderAccueil() {
+  return renderHero() + renderAtouts();
 }
 
 function renderLinks() {
