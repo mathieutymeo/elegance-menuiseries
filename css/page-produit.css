@@ -140,7 +140,7 @@
 
 .intro-produit__cta span {
   font-family: "Figtree", system-ui, sans-serif;
-  font-size: 14px;
+  font-size: clamp(11px, 0.833vw, 16px);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.04em;
@@ -451,7 +451,7 @@
 
 .promesse-produit__cta span {
   font-family: "Figtree", system-ui, sans-serif;
-  font-size: 14px;
+  font-size: clamp(11px, 0.833vw, 16px);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.04em;
@@ -595,6 +595,8 @@
   }
 
   .promesse-produit__body {
+    font-size: 30px;
+    line-height: 36px;
     margin-top: 24px;
   }
 
