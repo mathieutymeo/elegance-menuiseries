@@ -172,7 +172,9 @@ $icons_svg = [
     </div>
     <address class="site-footer__address">
       <?= e($footer['nom']) ?><br>
-      <?= e($footer['adresse']) ?><br><br>
+      <?= e($footer['adresse']) ?><br>
+      <?= e($footer['adresse2'] ?? '') ?><br>
+      <br>
       <a href="tel:<?= preg_replace('/\s/', '', $footer['telephone']) ?>" style="color:inherit;text-decoration:none;"><?= e($footer['telephone']) ?></a><br>
       <a href="mailto:<?= e($footer['email']) ?>" style="color:inherit;text-decoration:none;"><?= e($footer['email']) ?></a>
     </address>
