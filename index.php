@@ -20,10 +20,16 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= e($meta['title']) ?></title>
   <meta name="description" content="<?= e($meta['description']) ?>">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elegancemenuiseries.com/">
+  <meta property="og:title" content="<?= e($meta['title']) ?>">
+  <meta property="og:description" content="<?= e($meta['description']) ?>">
+  <meta property="og:image" content="https://elegancemenuiseries.com/<?= e($links['og_image'] ?? 'assets/images/og-elegance-menuiseries.jpg') ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=54">
+  <link rel="stylesheet" href="css/style.css?v=57">
 </head>
 <body>
 
@@ -43,8 +49,8 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
 
   <!-- NAVIGATION PRINCIPALE -->
   <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
-    <a href="#" class="main-nav__brand-mobile">
-      <span class="main-nav__dot" aria-hidden="true"></span>
+    <a href="/" class="main-nav__brand-mobile">
+      <img class="main-nav__brand-logo" src="assets/icons/logo-em.svg" alt="" width="24" height="24" aria-hidden="true">
       Élégance Menuiseries
     </a>
     <button class="main-nav__burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -431,5 +437,6 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
     });
   </script>
 
+  <img src="/api/track.php?p=accueil" alt="" style="position:absolute;width:1px;height:1px;opacity:0;" aria-hidden="true">
 </body>
 </html>
