@@ -1472,8 +1472,17 @@ a {
     margin-left: 0;
   }
 
+  .hero__main {
+    top: 48%;
+  }
+
   .hero__title {
     white-space: normal;
+  }
+
+  .promesse__body {
+    font-size: 33px;
+    line-height: 33px;
   }
 
   .section-promesse,
