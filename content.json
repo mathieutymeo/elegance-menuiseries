@@ -425,9 +425,9 @@
     "credit": "Création : Agence Tyméo",
     "credit_url": "https://www.tymeo.com",
     "legal_links": [
-      {"label": "Crédits & mentions légales", "url": "#"},
-      {"label": "Politique de confidentialité", "url": "#"},
-      {"label": "Politique de cookies", "url": "#"}
+      {"label": "Crédits & mentions légales", "url": "/mentions-legales.html"},
+      {"label": "Politique de confidentialité", "url": "/politique-confidentialite.html"},
+      {"label": "Politique de cookies", "url": "/politique-cookies.html"}
     ]
   }
 }

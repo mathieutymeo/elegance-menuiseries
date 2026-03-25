@@ -10,6 +10,9 @@ RewriteRule ^fenetres-portes-pvc\.html$ fenetres-portes-pvc.php [L]
 RewriteRule ^volets-roulants\.html$ volets-roulants.php [L]
 RewriteRule ^portes-garage\.html$ portes-garage.php [L]
 RewriteRule ^portails-clotures\.html$ portails-clotures.php [L]
+RewriteRule ^mentions-legales\.html$ mentions-legales.php [L]
+RewriteRule ^politique-confidentialite\.html$ politique-confidentialite.php [L]
+RewriteRule ^politique-cookies\.html$ politique-cookies.php [L]
 
 # Protéger les fichiers sensibles
 <FilesMatch "^(content\.json|content\.json\.bak)$">
