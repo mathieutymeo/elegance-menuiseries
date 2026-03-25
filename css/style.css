@@ -601,7 +601,7 @@ a {
 
 .section-atouts {
   background-color: #000000;
-  padding: 0 160px 265px;
+  padding: 0 clamp(80px, 8.33vw, 160px) 265px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 0;
@@ -624,13 +624,13 @@ a {
 */
 .atout--1 {
   margin-top: -80px;
-  padding-left: 240px;
+  padding-left: clamp(80px, 12.5vw, 240px);
 }
 
-/* Bloc 2 : décalé 801px vers le bas + 82px vers la droite dans sa colonne */
+/* Bloc 2 : décalé 801px vers le bas + padding proportionnel dans sa colonne */
 .atout--2 {
   margin-top: 801px;
-  padding-left: 82px;
+  padding-left: clamp(24px, 4.27vw, 82px);
 }
 
 /*
