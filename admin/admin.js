@@ -72,6 +72,7 @@ document.getElementById('logout-btn').addEventListener('click', async () => {
 async function showDashboard() {
   document.getElementById('login-screen').hidden = true;
   document.getElementById('dashboard').hidden = false;
+  window.scrollTo(0, 0);
   await loadContent();
   renderSection('links');
 }
