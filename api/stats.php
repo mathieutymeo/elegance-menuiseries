@@ -15,9 +15,21 @@ if (empty($_SESSION['admin_logged_in'])) {
 
 function loadStats() {
     if (!file_exists(STATS_FILE)) {
-        return ['daily' => [], 'pages' => []];
+        return ['daily' => [], 'pages' => [], 'unique_daily' => []];
     }
-    return json_decode(file_get_contents(STATS_FILE), true) ?: ['daily' => [], 'pages' => []];
+    $stats = json_decode(file_get_contents(STATS_FILE), true) ?: ['daily' => [], 'pages' => []];
+
+    // Extraire uniquement les compteurs (pas les hashes) pour l'API
+    $uniqueDaily = [];
+    if (!empty($stats['unique'])) {
+        foreach ($stats['unique'] as $date => $data) {
+            $uniqueDaily[$date] = $data['count'] ?? 0;
+        }
+    }
+    $stats['unique_daily'] = $uniqueDaily;
+    unset($stats['unique']); // Ne pas exposer les hashes
+
+    return $stats;
 }
 
 echo json_encode(loadStats());
