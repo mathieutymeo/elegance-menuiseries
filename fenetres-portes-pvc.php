@@ -192,6 +192,7 @@ $icons_svg = [
     </div>
     <address class="site-footer__address">
       <?= e($footer['nom']) ?><br>
+      <br>
       <?= e($footer['adresse']) ?><br>
       <?= e($footer['adresse2'] ?? '') ?><br>
       <br>
