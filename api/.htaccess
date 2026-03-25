@@ -1,3 +1,6 @@
+# Empêcher le listing du répertoire
+Options -Indexes
+
 # Protéger config.php de l'accès direct
 <Files "config.php">
   Require all denied

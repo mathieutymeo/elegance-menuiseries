@@ -41,7 +41,9 @@ if ($method === 'POST') {
     $section = $input['section'] ?? null;
     $data = $input['data'] ?? null;
 
-    if ($section && $data) {
+    // Valider le nom de section (uniquement les sections autorisées)
+    $allowedSections = ['meta', 'links', 'hero', 'promesse', 'gamme', 'atouts', 'methode', 'temoignages', 'cta', 'footer', 'page_volets', 'page_garage', 'page_portails', 'page_alu', 'page_pvc'];
+    if ($section && $data && in_array($section, $allowedSections, true)) {
         $current[$section] = $data;
     } else {
         http_response_code(400);

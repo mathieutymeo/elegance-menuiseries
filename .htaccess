@@ -3,8 +3,20 @@
 # Rediriger index.html vers index.php
 DirectoryIndex index.php index.html
 
-# Servir les fichiers PHP à la place des HTML (CMS dynamique)
+# Forcer HTTPS
 RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Headers de sécurité
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Servir les fichiers PHP à la place des HTML (CMS dynamique)
 RewriteRule ^fenetres-portes-alu\.html$ fenetres-portes-alu.php [L]
 RewriteRule ^fenetres-portes-pvc\.html$ fenetres-portes-pvc.php [L]
 RewriteRule ^volets-roulants\.html$ volets-roulants.php [L]

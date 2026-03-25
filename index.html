@@ -490,7 +490,8 @@
         photo.src = t.photo;
         photo.alt = t.author + ', ' + t.location;
         quote.textContent = t.quote;
-        author.innerHTML  = t.author + '<br>' + t.location;
+        const esc = s => { const d = document.createElement('span'); d.textContent = s; return d.innerHTML; };
+        author.innerHTML  = esc(t.author) + '<br>' + esc(t.location);
         dots.forEach((d, i) => {
           d.classList.toggle('temoignages__dot--active', i === index);
           d.setAttribute('aria-selected', i === index ? 'true' : 'false');

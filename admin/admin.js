@@ -286,7 +286,7 @@ async function loadAndDisplayStats() {
       } else {
         pagesEl.innerHTML = sorted.map(([page, count]) => `
           <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0ece6;">
-            <span style="font-family:'Figtree',sans-serif;font-size:14px;color:#000;">${pageNames[page] || page}</span>
+            <span style="font-family:'Figtree',sans-serif;font-size:14px;color:#000;">${pageNames[page] || page.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>
             <span style="font-family:'Figtree',sans-serif;font-size:14px;font-weight:600;color:#9E8C7D;">${count}</span>
           </div>
         `).join('');
