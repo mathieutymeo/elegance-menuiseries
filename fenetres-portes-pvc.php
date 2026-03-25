@@ -40,14 +40,14 @@ $icons_svg = [
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=63">
-  <link rel="stylesheet" href="css/page-produit.css?v=3">
+  <link rel="stylesheet" href="css/page-produit.css?v=4">
 </head>
 <body>
 
   <!-- HERO PAGE PRODUIT -->
   <section class="hero-produit" aria-label="<?= e($meta['title']) ?>">
     <div class="hero-produit__panel" aria-hidden="true"></div>
-    <div class="hero-produit__bg" aria-hidden="true"></div>
+    <div class="hero-produit__bg" style="background-image: linear-gradient(rgba(0,0,0,0.40)), url('<?= e($hero['background_image'] ?? 'assets/images/baie-vitree-moderne+elegance-menuiseries.jpg') ?>');" aria-hidden="true"></div>
     <img class="hero-produit__logo" src="assets/icons/logo-elegance.svg" alt="Élégance Menuiseries" width="241" height="188">
     <p class="hero-produit__title"><?= nl2br_title($hero['title']) ?></p>
     <h1 class="hero-produit__tagline"><?= e($hero['tagline']) ?></h1>
