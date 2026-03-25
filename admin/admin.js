@@ -320,7 +320,7 @@ function renderGamme() {
   produits.forEach((p, i) => {
     html += `
       <div class="form-section repeater-item">
-        <div class="repeater-item__header">Produit ${i + 1} — ${p.label.replace(/<br>/g, ' ')}</div>
+        <div class="repeater-item__header">Produit ${i + 1} — ${(p.label || '').replace(/<br>/g, ' ')}</div>
         <div class="form-group">
           <label class="form-label">Nom du produit</label>
           <input class="form-input" id="gamme-prod-${i}-label" value="${e(p.label || '')}">
