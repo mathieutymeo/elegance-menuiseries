@@ -1195,7 +1195,7 @@ a {
   }
 
   .main-nav__list .main-nav__item:first-child {
-    display: list-item;
+    display: block;
   }
 
   .main-nav__list {
