@@ -29,11 +29,17 @@ $icons_svg = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= e($meta['title']) ?></title>
   <meta name="description" content="<?= e($meta['description']) ?>">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elegancemenuiseries.com/portails-clotures.html">
+  <meta property="og:title" content="<?= e($meta['title']) ?>">
+  <meta property="og:description" content="<?= e($meta['description']) ?>">
+  <meta property="og:image" content="https://elegancemenuiseries.com/<?= e($links['og_image'] ?? 'assets/images/og-elegance-menuiseries.jpg') ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=63">
-  <link rel="stylesheet" href="css/page-produit.css?v=2">
+  <link rel="stylesheet" href="css/page-produit.css?v=3">
 </head>
 <body>
 
@@ -46,7 +52,7 @@ $icons_svg = [
   </section>
 
   <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
-    <a href="/" class="main-nav__brand-mobile"><span class="main-nav__dot" aria-hidden="true"></span> Élégance Menuiseries</a>
+    <a href="/" class="main-nav__brand-mobile"><img class="main-nav__brand-logo" src="assets/icons/logo-em.svg" alt="" width="24" height="24" aria-hidden="true"> Élégance Menuiseries</a>
     <button class="main-nav__burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="main-nav__list" id="nav-list">
       <li class="main-nav__item"><a href="/" class="main-nav__link main-nav__link--brand"><span class="main-nav__dot" aria-hidden="true"></span> Élégance Menuiseries</a></li>
@@ -141,5 +147,6 @@ $icons_svg = [
     gsap.from('.site-footer__address',{opacity:0,y:20,duration:0.6,scrollTrigger:{trigger:'.site-footer__address',start:'top 90%'}});
     gsap.from('.site-footer__legal',{opacity:0,duration:0.5,scrollTrigger:{trigger:'.site-footer__legal',start:'top 95%'}});
   </script>
+  <img src="/api/track.php?p=portails" alt="" style="position:absolute;width:1px;height:1px;opacity:0;" aria-hidden="true">
 </body>
 </html>

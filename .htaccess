@@ -3,6 +3,11 @@
 # Rediriger index.html vers index.php
 DirectoryIndex index.php index.html
 
+# Servir les fichiers PHP à la place des HTML (CMS dynamique)
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.+)\.html$ $1.php [L]
+
 # Protéger les fichiers sensibles
 <FilesMatch "^(content\.json|content\.json\.bak)$">
   Require all denied
