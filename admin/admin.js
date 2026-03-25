@@ -302,8 +302,8 @@ async function loadAndDisplayStats() {
 
 function renderAccueil() {
   const strip = html => html.replace(/<button class="save-btn"[^>]*>.*?<\/button>/g, '');
-  return strip(renderHero()) + strip(renderAtouts()) + strip(renderGamme())
-    + `<button class="save-btn" onclick="saveHero();saveAtouts();saveGamme();">Sauvegarder</button>`;
+  return strip(renderHero()) + strip(renderAtouts()) + strip(renderGamme()) + strip(renderMeta())
+    + `<button class="save-btn" onclick="saveHero();saveAtouts();saveGamme();saveMeta();">Sauvegarder</button>`;
 }
 
 function renderFooterCTA() {
