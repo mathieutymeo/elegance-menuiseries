@@ -601,7 +601,7 @@ a {
 
 .section-atouts {
   background-color: #000000;
-  padding: 0 clamp(80px, 8.33vw, 160px) 265px;
+  padding: 0 clamp(80px, 8.33vw, 160px) 140px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 0;
