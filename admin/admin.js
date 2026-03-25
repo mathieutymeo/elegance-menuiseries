@@ -193,8 +193,13 @@ function renderSection(section) {
   };
 
   if (renderers[section]) {
-    container.innerHTML = renderers[section]();
-    initImageUploads();
+    try {
+      container.innerHTML = renderers[section]();
+      initImageUploads();
+    } catch (err) {
+      console.error('Erreur renderSection:', section, err);
+      container.innerHTML = `<p style="color:red;padding:24px;">Erreur : ${err.message}</p>`;
+    }
   }
 }
 
