@@ -19,3 +19,6 @@ uploads/*
 
 # Backup content
 content.json.bak
+
+# Données stats (gérées côté serveur)
+data/

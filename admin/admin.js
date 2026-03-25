@@ -204,13 +204,100 @@ function renderSection(section) {
 }
 
 function renderHome() {
+  // Charger les stats en arrière-plan
+  setTimeout(loadAndDisplayStats, 100);
+
   return `
-    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;text-align:center;">
-      <img src="/assets/icons/logo-elegance.svg" alt="Élégance Menuiseries" style="width:200px;height:auto;margin-bottom:32px;">
-      <h2 style="font-family:'Figtree',sans-serif;font-size:24px;font-weight:400;color:#000;margin:0 0 8px;">Bienvenue dans votre espace d'administration</h2>
-      <p style="font-family:'Figtree',sans-serif;font-size:14px;color:#666;margin:0;">Utilisez les onglets ci-dessus pour modifier le contenu de votre site.</p>
+    <div style="display:flex;flex-direction:column;align-items:center;padding:60px 24px 40px;text-align:center;">
+      <img src="/assets/icons/logo-elegance.svg" alt="Élégance Menuiseries" style="width:180px;height:auto;margin-bottom:24px;">
+      <h2 style="font-family:'Figtree',sans-serif;font-size:22px;font-weight:400;color:#000;margin:0 0 6px;">Bienvenue dans votre espace d'administration</h2>
+      <p style="font-family:'Figtree',sans-serif;font-size:14px;color:#666;margin:0 0 48px;">Utilisez les onglets ci-dessus pour modifier le contenu de votre site.</p>
+    </div>
+
+    <div style="max-width:900px;margin:0 auto;padding:0 24px 60px;">
+      <h3 style="font-family:'Figtree',sans-serif;font-size:16px;font-weight:600;color:#000;margin:0 0 20px;text-transform:uppercase;letter-spacing:0.04em;">Statistiques de visites</h3>
+
+      <div id="stats-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;">
+        <div style="background:#fff;border:1px solid #e0dbd5;border-radius:8px;padding:24px;text-align:center;">
+          <p style="font-family:'Figtree',sans-serif;font-size:32px;font-weight:600;color:#9E8C7D;margin:0;" id="stat-today">—</p>
+          <p style="font-family:'Figtree',sans-serif;font-size:12px;color:#666;margin:6px 0 0;text-transform:uppercase;letter-spacing:0.04em;">Aujourd'hui</p>
+        </div>
+        <div style="background:#fff;border:1px solid #e0dbd5;border-radius:8px;padding:24px;text-align:center;">
+          <p style="font-family:'Figtree',sans-serif;font-size:32px;font-weight:600;color:#9E8C7D;margin:0;" id="stat-week">—</p>
+          <p style="font-family:'Figtree',sans-serif;font-size:12px;color:#666;margin:6px 0 0;text-transform:uppercase;letter-spacing:0.04em;">7 derniers jours</p>
+        </div>
+        <div style="background:#fff;border:1px solid #e0dbd5;border-radius:8px;padding:24px;text-align:center;">
+          <p style="font-family:'Figtree',sans-serif;font-size:32px;font-weight:600;color:#9E8C7D;margin:0;" id="stat-month">—</p>
+          <p style="font-family:'Figtree',sans-serif;font-size:12px;color:#666;margin:6px 0 0;text-transform:uppercase;letter-spacing:0.04em;">30 derniers jours</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Figtree',sans-serif;font-size:16px;font-weight:600;color:#000;margin:0 0 16px;text-transform:uppercase;letter-spacing:0.04em;">Visites par page</h3>
+      <div id="stats-pages" style="background:#fff;border:1px solid #e0dbd5;border-radius:8px;padding:20px;">
+        <p style="font-family:'Figtree',sans-serif;font-size:14px;color:#999;margin:0;">Chargement...</p>
+      </div>
     </div>
   `;
+}
+
+async function loadAndDisplayStats() {
+  try {
+    const res = await api('stats.php', {
+      method: 'GET'
+    });
+
+    const daily = res.daily || {};
+    const pages = res.pages || {};
+    const today = new Date().toISOString().slice(0, 10);
+
+    // Calcul des totaux
+    let todayCount = daily[today] || 0;
+    let weekCount = 0;
+    let monthCount = 0;
+
+    const now = new Date();
+    Object.entries(daily).forEach(([date, count]) => {
+      const d = new Date(date);
+      const diffDays = Math.floor((now - d) / (1000 * 60 * 60 * 24));
+      if (diffDays < 7) weekCount += count;
+      if (diffDays < 30) monthCount += count;
+    });
+
+    const el = (id) => document.getElementById(id);
+    if (el('stat-today')) el('stat-today').textContent = todayCount;
+    if (el('stat-week')) el('stat-week').textContent = weekCount;
+    if (el('stat-month')) el('stat-month').textContent = monthCount;
+
+    // Visites par page
+    const pageNames = {
+      accueil: 'Accueil',
+      alu: 'Fenêtres / Portes Alu',
+      pvc: 'Fenêtres / Portes PVC',
+      volets: 'Volets Roulants',
+      garage: 'Portes de Garage',
+      portails: 'Portails & Clôtures'
+    };
+
+    const pagesEl = el('stats-pages');
+    if (pagesEl) {
+      const sorted = Object.entries(pages).sort((a, b) => b[1] - a[1]);
+      if (sorted.length === 0) {
+        pagesEl.innerHTML = '<p style="font-family:\'Figtree\',sans-serif;font-size:14px;color:#999;margin:0;">Aucune donnée pour le moment. Les statistiques apparaîtront après les premières visites.</p>';
+      } else {
+        pagesEl.innerHTML = sorted.map(([page, count]) => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0ece6;">
+            <span style="font-family:'Figtree',sans-serif;font-size:14px;color:#000;">${pageNames[page] || page}</span>
+            <span style="font-family:'Figtree',sans-serif;font-size:14px;font-weight:600;color:#9E8C7D;">${count}</span>
+          </div>
+        `).join('');
+      }
+    }
+  } catch (err) {
+    const pagesEl = document.getElementById('stats-pages');
+    if (pagesEl) {
+      pagesEl.innerHTML = '<p style="font-family:\'Figtree\',sans-serif;font-size:14px;color:#999;margin:0;">Les statistiques seront disponibles après les premières visites sur le site.</p>';
+    }
+  }
 }
 
 function renderAccueil() {
