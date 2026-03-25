@@ -181,11 +181,9 @@ function renderSection(section) {
     links: renderLinks,
     accueil: renderAccueil,
     promesse: renderPromesse,
-    gamme: renderGamme,
     methode: renderMethode,
     temoignages: renderTemoignages,
-    cta: renderCTA,
-    footer: renderFooter,
+    footer: renderFooterCTA,
     meta: renderMeta,
     page_volets: renderPageVolets,
     page_garage: renderPageGarage,
@@ -211,7 +209,11 @@ function renderHome() {
 }
 
 function renderAccueil() {
-  return renderHero() + renderAtouts();
+  return renderHero() + renderAtouts() + renderGamme();
+}
+
+function renderFooterCTA() {
+  return renderCTA() + renderFooter();
 }
 
 function renderLinks() {
