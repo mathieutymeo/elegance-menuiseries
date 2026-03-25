@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration — Élégance Menuiseries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="dashboard">
+
+    <header class="dashboard__header">
+      <h1 class="dashboard__title">Administration</h1>
+      <div class="dashboard__actions">
+        <a href="/" class="dashboard__link" target="_blank">Voir le site</a>
+        <button id="logout-btn" class="dashboard__logout">Déconnexion</button>
+      </div>
+    </header>
+
+    <nav class="dashboard__nav">
+      <button class="dashboard__tab dashboard__tab--active" data-section="links">Liens & URLs</button>
+      <button class="dashboard__tab" data-section="hero">Hero</button>
+      <button class="dashboard__tab" data-section="promesse">Promesse</button>
+      <button class="dashboard__tab" data-section="gamme">Gamme</button>
+      <button class="dashboard__tab" data-section="atouts">Atouts</button>
+      <button class="dashboard__tab" data-section="methode">Méthode</button>
+      <button class="dashboard__tab" data-section="temoignages">Témoignages</button>
+      <button class="dashboard__tab" data-section="cta">CTA</button>
+      <button class="dashboard__tab" data-section="footer">Footer</button>
+      <button class="dashboard__tab" data-section="meta">SEO / Meta</button>
+      <button class="dashboard__tab" data-section="page_volets">Volets</button>
+      <button class="dashboard__tab" data-section="page_garage">Garage</button>
+      <button class="dashboard__tab" data-section="page_portails">Portails</button>
+      <button class="dashboard__tab" data-section="page_alu">Page ALU</button>
+      <button class="dashboard__tab" data-section="page_pvc">Page PVC</button>
+    </nav>
+
+    <main class="dashboard__content" id="dashboard-content">
+      <!-- Rempli dynamiquement par admin.js -->
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+
+  </div>
+
+  <script src="admin.js"></script>
+
+</body>
+</html>

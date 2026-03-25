@@ -34,31 +34,15 @@ async function checkAuth() {
     });
     if (res.authenticated) {
       csrfToken = res.csrf_token;
-      showDashboard();
+      await loadContent();
+      renderSection('links');
+    } else {
+      window.location.href = 'index.html';
     }
   } catch (e) {
-    // Not authenticated
+    window.location.href = 'index.html';
   }
 }
-
-document.getElementById('login-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const password = document.getElementById('login-password').value;
-  const errorEl = document.getElementById('login-error');
-  errorEl.hidden = true;
-
-  try {
-    const res = await api('auth.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'login', password })
-    });
-    csrfToken = res.csrf_token;
-    showDashboard();
-  } catch (err) {
-    errorEl.hidden = false;
-  }
-});
 
 document.getElementById('logout-btn').addEventListener('click', async () => {
   await api('auth.php', {
@@ -66,16 +50,8 @@ document.getElementById('logout-btn').addEventListener('click', async () => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ action: 'logout' })
   });
-  location.reload();
+  window.location.href = 'index.html';
 });
-
-async function showDashboard() {
-  document.getElementById('login-screen').hidden = true;
-  document.getElementById('dashboard').hidden = false;
-  window.scrollTo(0, 0);
-  await loadContent();
-  renderSection('links');
-}
 
 // ── Content Loading ─────────────────────────────────────────
 
