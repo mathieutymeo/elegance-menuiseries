@@ -301,11 +301,15 @@ async function loadAndDisplayStats() {
 }
 
 function renderAccueil() {
-  return renderHero() + renderAtouts() + renderGamme();
+  const strip = html => html.replace(/<button class="save-btn"[^>]*>.*?<\/button>/g, '');
+  return strip(renderHero()) + strip(renderAtouts()) + strip(renderGamme())
+    + `<button class="save-btn" onclick="saveHero();saveAtouts();saveGamme();">Sauvegarder</button>`;
 }
 
 function renderFooterCTA() {
-  return renderCTA() + renderFooter();
+  const strip = html => html.replace(/<button class="save-btn"[^>]*>.*?<\/button>/g, '');
+  return strip(renderCTA()) + strip(renderFooter())
+    + `<button class="save-btn" onclick="saveCTA();saveFooter();">Sauvegarder</button>`;
 }
 
 function renderLinks() {
