@@ -256,13 +256,20 @@ a {
 .main-nav__brand-mobile {
   display: none;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: "Figtree", system-ui, sans-serif;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
   color: #000000;
   letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.main-nav__brand-logo {
+  width: 24px;
+  height: auto;
+  flex-shrink: 0;
 }
 
 /* Bouton burger — masqué en desktop */
@@ -1188,7 +1195,7 @@ a {
   }
 
   .main-nav__list .main-nav__item:first-child {
-    display: none;
+    display: list-item;
   }
 
   .main-nav__list {
