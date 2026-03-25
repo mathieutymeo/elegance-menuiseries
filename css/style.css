@@ -606,7 +606,8 @@ a {
   grid-template-columns: 1fr 1fr;
   column-gap: 0;
   align-items: start;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .atout {
