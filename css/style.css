@@ -613,6 +613,7 @@ a {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  overflow: hidden;
 }
 
 /*
@@ -654,8 +655,9 @@ a {
 */
 .atout__visual {
   position: relative;
-  width: 560px;
-  height: 560px;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
 
@@ -726,7 +728,8 @@ a {
 }
 
 .atout__body {
-  width: 718px;
+  width: 100%;
+  max-width: 718px;
   font-family: "Figtree", system-ui, sans-serif;
   font-size: clamp(14px, 0.938vw, 18px);
   font-weight: 400;
