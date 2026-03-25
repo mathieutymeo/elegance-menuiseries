@@ -17,7 +17,8 @@ node_modules/
 uploads/*
 !uploads/.htaccess
 
-# Backup content
+# Contenu administrable (géré côté serveur, pas par git)
+content.json
 content.json.bak
 
 # Données stats (gérées côté serveur)
