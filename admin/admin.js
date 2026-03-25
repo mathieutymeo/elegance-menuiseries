@@ -103,9 +103,40 @@ async function saveSection(section, data) {
 
 // ── Image Upload ────────────────────────────────────────────
 
+function compressImage(file, maxWidth = 1920, quality = 0.82) {
+  return new Promise((resolve) => {
+    // SVG : pas de compression
+    if (file.type === 'image/svg+xml') { resolve(file); return; }
+
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      let w = img.width, h = img.height;
+      if (w > maxWidth) { h = Math.round(h * maxWidth / w); w = maxWidth; }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+
+      canvas.toBlob(
+        (blob) => {
+          const name = file.name.replace(/\.\w+$/, '.jpg');
+          resolve(new File([blob], name, { type: 'image/jpeg' }));
+        },
+        'image/jpeg',
+        quality
+      );
+    };
+    img.src = url;
+  });
+}
+
 async function uploadImage(file) {
+  const compressed = await compressImage(file);
   const form = new FormData();
-  form.append('image', file);
+  form.append('image', compressed);
 
   const res = await fetch(`${API}/upload.php`, {
     method: 'POST',
@@ -126,7 +157,7 @@ function imageUploadHTML(currentSrc, inputId) {
         <input type="file" id="file-${inputId}" accept="image/*" style="display:none">
         <button type="button" class="image-upload__btn" onclick="document.getElementById('file-${inputId}').click()">Choisir une image</button>
         <input type="hidden" id="${inputId}" value="${currentSrc}">
-        <p class="form-hint">JPG, PNG, WEBP ou SVG — max 5 Mo</p>
+        <p class="form-hint">JPG, PNG, WEBP ou SVG — compression auto pour le web</p>
       </div>
     </div>
   `;
