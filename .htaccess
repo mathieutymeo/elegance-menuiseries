@@ -5,7 +5,8 @@ DirectoryIndex index.php index.html
 
 # Servir les fichiers PHP à la place des HTML (CMS dynamique)
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} !^/admin/
+RewriteCond %{DOCUMENT_ROOT}/$1.php -f
 RewriteRule ^(.+)\.html$ $1.php [L]
 
 # Protéger les fichiers sensibles
