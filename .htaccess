@@ -5,9 +5,11 @@ DirectoryIndex index.php index.html
 
 # Servir les fichiers PHP à la place des HTML (CMS dynamique)
 RewriteEngine On
-RewriteCond %{REQUEST_URI} !^/admin/
-RewriteCond %{DOCUMENT_ROOT}/$1.php -f
-RewriteRule ^(.+)\.html$ $1.php [L]
+RewriteRule ^fenetres-portes-alu\.html$ fenetres-portes-alu.php [L]
+RewriteRule ^fenetres-portes-pvc\.html$ fenetres-portes-pvc.php [L]
+RewriteRule ^volets-roulants\.html$ volets-roulants.php [L]
+RewriteRule ^portes-garage\.html$ portes-garage.php [L]
+RewriteRule ^portails-clotures\.html$ portails-clotures.php [L]
 
 # Protéger les fichiers sensibles
 <FilesMatch "^(content\.json|content\.json\.bak)$">
