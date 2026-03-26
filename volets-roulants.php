@@ -75,7 +75,7 @@ $icons_svg = [
 
   <section class="section-intro-produit" id="volets">
     <p class="intro-produit__body"><?= e($page['intro']) ?></p>
-    <a href="<?= e($links['cta_url']) ?>" class="intro-produit__cta"><img src="assets/icons/arrow-right.svg" alt="" width="20" height="12" aria-hidden="true"><span>RÉSERVER UN APPEL DE DÉCOUVERTE</span></a>
+    <a href="<?= e($links['cta_url']) ?>" class="intro-produit__cta" target="_blank" rel="noopener"><img src="assets/icons/arrow-right.svg" alt="" width="20" height="12" aria-hidden="true"><span>RÉSERVER UN APPEL DE DÉCOUVERTE</span></a>
   </section>
 
   <section class="section-gamme-produit">
@@ -116,7 +116,7 @@ $icons_svg = [
 
   <footer class="site-footer">
     <div class="site-footer__bg" aria-hidden="true"></div>
-    <div class="site-footer__hero"><img class="site-footer__logo" src="assets/icons/logo-elegance.svg" alt="Élégance Menuiseries" width="308" height="240"><a href="<?= e($links['cta_url']) ?>" class="site-footer__cta"><img src="assets/icons/arrow-right.svg" alt="" width="20" height="12" aria-hidden="true"><span><?= e($footer['cta_label']) ?></span></a></div>
+    <div class="site-footer__hero"><img class="site-footer__logo" src="assets/icons/logo-elegance.svg" alt="Élégance Menuiseries" width="308" height="240"><a href="<?= e($links['cta_url']) ?>" class="site-footer__cta" target="_blank" rel="noopener"><img src="assets/icons/arrow-right.svg" alt="" width="20" height="12" aria-hidden="true"><span><?= e($footer['cta_label']) ?></span></a></div>
     <address class="site-footer__address"><?= e($footer['nom']) ?><br><br><?= e($footer['adresse']) ?><br><?= e($footer['adresse2'] ?? '') ?><br><br><a href="tel:<?= preg_replace('/\s/', '', $footer['telephone']) ?>" style="color:inherit;text-decoration:none;"><?= e($footer['telephone']) ?></a><br><a href="mailto:<?= e($footer['email']) ?>" style="color:inherit;text-decoration:none;"><?= e($footer['email']) ?></a></address>
     <nav class="site-footer__legal" aria-label="Liens légaux"><?php foreach ($footer['legal_links'] as $link): ?><a href="<?= e($link['url']) ?>"><?= e($link['label']) ?></a><?php endforeach; ?><span class="site-footer__credit"><?= e($footer['credit']) ?></span></nav>
   </footer>

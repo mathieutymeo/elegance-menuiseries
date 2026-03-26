@@ -39,7 +39,7 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
     <img class="hero__logo" src="assets/icons/logo-elegance.svg" alt="Élégance Menuiseries" width="206" height="162">
     <div class="hero__main">
       <p class="hero__title"><?= e($hero['title']) ?></p>
-      <a href="<?= e($links['cta_url']) ?>" class="hero__cta">
+      <a href="<?= e($links['cta_url']) ?>" class="hero__cta" target="_blank" rel="noopener">
         <img class="hero__cta-arrow" src="assets/icons/arrow-right.svg" alt="" width="22" height="14" aria-hidden="true">
         <span class="hero__cta-label"><?= e($hero['cta_label']) ?></span>
       </a>
@@ -221,7 +221,7 @@ function e($str) { return htmlspecialchars($str, ENT_QUOTES, 'UTF-8'); }
     <div class="site-footer__bg" aria-hidden="true"></div>
     <div class="site-footer__hero">
       <img class="site-footer__logo" src="assets/icons/logo-elegance.svg" alt="Élégance Menuiseries" width="308" height="240">
-      <a href="<?= e($links['cta_url']) ?>" class="site-footer__cta">
+      <a href="<?= e($links['cta_url']) ?>" class="site-footer__cta" target="_blank" rel="noopener">
         <img src="assets/icons/arrow-right.svg" alt="" width="20" height="12" aria-hidden="true">
         <span><?= e($footer['cta_label']) ?></span>
       </a>

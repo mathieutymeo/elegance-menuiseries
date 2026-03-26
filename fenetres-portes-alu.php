@@ -86,7 +86,7 @@ $icons_svg = [
   <!-- INTRO PRODUIT -->
   <section class="section-intro-produit" id="fenetres-alu">
     <p class="intro-produit__body"><?= e($page['intro']) ?></p>
-    <a href="<?= e($links['cta_url']) ?>" class="intro-produit__cta">
+    <a href="<?= e($links['cta_url']) ?>" class="intro-produit__cta" target="_blank" rel="noopener">
       <img src="assets/icons/arrow-right.svg" alt="" width="20" height="12" aria-hidden="true">
       <span>RÉSERVER UN APPEL DE DÉCOUVERTE</span>
     </a>
@@ -165,7 +165,7 @@ $icons_svg = [
     <div class="site-footer__bg" aria-hidden="true"></div>
     <div class="site-footer__hero">
       <img class="site-footer__logo" src="assets/icons/logo-elegance.svg" alt="Élégance Menuiseries" width="308" height="240">
-      <a href="<?= e($links['cta_url']) ?>" class="site-footer__cta">
+      <a href="<?= e($links['cta_url']) ?>" class="site-footer__cta" target="_blank" rel="noopener">
         <img src="assets/icons/arrow-right.svg" alt="" width="20" height="12" aria-hidden="true">
         <span><?= e($footer['cta_label']) ?></span>
       </a>
