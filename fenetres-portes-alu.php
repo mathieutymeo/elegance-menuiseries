@@ -77,7 +77,7 @@ $icons_svg = [
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff"/></svg>
       </a>
     </div>
-    <a href="<?= e($links['cta_url']) ?>" class="side-menu__contact">
+    <a href="#contact" class="side-menu__contact">
       <img src="assets/icons/arrow-right.svg" alt="" width="16" height="10" aria-hidden="true">
       <span>CONTACT</span>
     </a>
